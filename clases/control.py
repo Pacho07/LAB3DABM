@@ -37,6 +37,7 @@ class controlador:
 
                     print('introducir cantidad de datos que se requieren')
                     opcion=int(input())
+                    import puert
 
                     guardado=puert.Puertico('COM3',9600)
                     guardado.abrir()
@@ -103,12 +104,6 @@ def terceraPantalla():
     opcion=int(input())
 
     return opcion
-
-
-
-hola=controlador()
-
-hola.Todo()
 
 
 
