@@ -23,6 +23,7 @@ class parameters:
 
 
 
+
 def GenerarControlParameters():
 
     print('DEFINIR RANGOS DE TEMPERATURA')
@@ -33,6 +34,14 @@ def GenerarControlParameters():
     nbajo = int(input())
     print('ingrese valor limite superior normalidad')
     nalto = int(input())
+
+    hola=parameters(hbajo,nbajo,nalto)
+
+    return hola
+
+
+def GenerarControlParameters1(hbajo,nbajo,nalto):
+
 
     hola=parameters(hbajo,nbajo,nalto)
 

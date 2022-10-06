@@ -1,12 +1,26 @@
+import time
+
 import pandas as pd
+import matplotlib.pyplot as plt
 
 class report:
 
     def __init__(self,nombreCsv):
         self.Bd=pd.read_csv(nombreCsv)
 
+
     def mostrarValores(self):
-        print(self.Bd)
+        temp=self.Bd['TEMPERATURA']
+        plt.plot(temp)
+        plt.title('tiempo vs temperatura')
+        plt.show()
+        plt.close()
+
+
+
+
+
+
 
 
     def valorMaximoFecha(self):
@@ -22,18 +36,17 @@ class report:
         posMax=self.Bd.index [self.Bd['TEMPERATURA'] == self.Bd['TEMPERATURA'].max()].tolist()
 
 
-        print('Valor maximo: '+str(valorMax)+' y su fecha: '+str(self.Bd['FECHA'].get(posMin[0])))
-        print('Valor minimo: '+str(valorMin)+' y su fecha: '+str(self.Bd['FECHA'].get(posMax[0])))
+        a=('Valor maximo: '+str(valorMax)+' y su fecha: '+str(self.Bd['FECHA'].get(posMin[0])))
+        b=('Valor minimo: '+str(valorMin)+' y su fecha: '+str(self.Bd['FECHA'].get(posMax[0])))
+
+        return a+b
 
 
     def valorPromedio(self):
 
-        print('El promedio de temperaturas es: '
-              ''
-              ''
-              ''
-              '')
 
-        print(str(self.Bd['TEMPERATURA'].mean())+' grados')
+        b=('El promedio de temperatura es: '+str(self.Bd['TEMPERATURA'].mean())+' grados')
+
+        return b
 
 

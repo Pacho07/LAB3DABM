@@ -1,15 +1,15 @@
 import serial
 import matplotlib.pyplot as plt
 import matplotlib.animation as animation
-import manejoDatos
-import Parametros
+import clases.manejoDatos
+import clases.Parametros
 import time
 
 puerto = serial.Serial('COM3', 9600)
 ydata = []
 
 fig, ax = plt.subplots()
-parametrizaje = Parametros.GenerarControlParameters()
+parametrizaje = clases.Parametros.GenerarControlParameters1(10,20,30)
 
 pause = False
 
@@ -64,10 +64,10 @@ def update_data(i):
         ax.clear()
         ax.plot(ydata)
         leed=parametrizaje.controlTemp(punto)
-        puerto.write(leed)
+
 
      else:
-        guardado = manejoDatos.ManejoData()
+        guardado = clases.manejoDatos.ManejoData()
         guardado.GuardandoExep(ydata)
 
 

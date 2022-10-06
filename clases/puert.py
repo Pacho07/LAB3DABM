@@ -1,8 +1,8 @@
 import serial
 import datetime
-import manejoDatos
+import clases.manejoDatos
 import time
-import Parametros
+import clases.Parametros
 
 
 class Puertico:
@@ -16,6 +16,7 @@ class Puertico:
     def abrir(self):
         puerto= serial.Serial(self.port,self.baudrate)
         self.puerto = puerto
+
 
     def leer(self):
         dato=self.puerto.readline().decode().strip()
@@ -35,20 +36,21 @@ class Puertico:
         serial.Serial.write(dato.encode())
 
     def leerCantidadDatos(self,numero):
+
+        self.abrir()
+
+
         ydata=[]
-
-        parametrizaje = Parametros.GenerarControlParameters()
-
+        parametrizaje = clases.Parametros.GenerarControlParameters1(10,20,30)
         for i in range(numero):
             hola=self.puerto.readline().decode().strip()
-            time.sleep(1)
-            print('la medicion es cada 1 segundo')
+            print('se estan tomando los datos')
             ydata.append(hola)
             leed=parametrizaje.controlTemp(hola)
             self.puerto.write(leed)
 
 
-        guardado=manejoDatos.ManejoData()
+        guardado= clases.manejoDatos.ManejoData()
         guardado.GuardandoExep(ydata)
 
         self.puerto.close()
