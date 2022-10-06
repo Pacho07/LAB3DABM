@@ -1,12 +1,23 @@
+import time
+
 import pandas as pd
+import matplotlib.pyplot as plt
 
 class report:
 
     def __init__(self,nombreCsv):
         self.Bd=pd.read_csv(nombreCsv)
 
+
     def mostrarValores(self):
-        print(self.Bd)
+        temp=self.Bd['TEMPERATURA']
+        plt.plot(temp)
+        plt.title('tiempo vs temperatura')
+        plt.show()
+        plt.close()
+
+
+
 
 
     def valorMaximoFecha(self):
